@@ -36,8 +36,18 @@ namespace UniversalAppCs
             message.Title = "Hello World";
             message.Commands.Add(new UICommand { Label = "Yes", Id = 0 });
             message.Commands.Add(new UICommand { Label = "No", Id = 1 });
+            
+           var res= await message.ShowAsync();
 
-            await message.ShowAsync();
+
+            if ((int)res.Id == 0)
+            {
+                MessageDialog msg = new MessageDialog("Thank you very much :) ");
+                msg.Title = "Thanks";
+                msg.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
+                await msg.ShowAsync();
+            }
+
         }
     }
 }
